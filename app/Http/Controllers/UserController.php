@@ -34,4 +34,9 @@ class UserController extends Controller
     public function user_register(){
         return view('user.user_register');
     }
+
+    public function insertUpdateUser(){
+
+        
+    }
 }
