@@ -13,3 +13,4 @@ Route::get('/',[LoginController::class,'index']);
 Route::post('/checklogin',[UserController::class,'login'])->name('checklogin');
 Route::get('/dashboard',[DashboardController::class,'index']);
 Route::get('user-register',[UserController::class,'user_register'])->name('user-register');
+Route::post('/insertUpdateUser',[UserController::class,'insertUpdateUser'])->name('insertUpdateUser');
