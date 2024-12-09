@@ -88,7 +88,14 @@ class UserController extends Controller
                 $data['is_active'],       // p_is_active
                 $data['image'],           // image
             ]);
-            dd($message);
+        if($message){
+            if($data['id'] >0 ){
+                $request->session()->flash('message','User Updated Succesfully');
+            }else{
+                $request->session()->flash('message','User Created Succesfully');
+            }
+            
+        }
         
     }
 
@@ -96,4 +103,11 @@ class UserController extends Controller
         $roles = DB::select('CALL GetAllUserRoles()');
         return $roles;
     }
+
+    public function viewAllUser(){
+        $userList = DB::select('CALL GetAllUserList()');
+        return view('user.view_user',compact('userList'));
+    }
+
+    
 }
