@@ -16,4 +16,6 @@
     <link rel="stylesheet" href="{{asset('assets/css/adminlte.css')}}"><!--end::Required Plugin(AdminLTE)--><!-- apexcharts -->
     <link rel="stylesheet" href="{{asset('assets/css/apexcharts.min.css')}}" ><!-- jsvectormap -->
     <link rel="stylesheet" href="{{asset('assets/css/jsvectormap.min.css')}}" >
+    @yield('additional_css')
+
 </head> <!--end::Head-->

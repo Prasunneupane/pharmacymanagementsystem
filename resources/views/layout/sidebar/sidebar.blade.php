@@ -8,18 +8,18 @@
                 <li class="nav-item"> <a href="{{url('/dashboard')}}" class="nav-link"> <i class="nav-icon bi bi-palette"></i>
                         <p>Dashboard</p>
                     </a> </li>
-                <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon fa fa-user"></i>
+                <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-user"></i>
                         <p>
                             User Management
                             <i class="nav-arrow bi bi-chevron-right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item"> <a href="./widgets/small-box.html" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"> <a href="{{route('user-register')}}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                 <p>Register User</p>
                             </a> </li>
-                        <li class="nav-item"> <a href="./widgets/info-box.html" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>info Box</p>
+                        <li class="nav-item"> <a href="{{route('viewAllUser')}}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                <p>View All Users</p>
                             </a> </li>
                         <li class="nav-item"> <a href="./widgets/cards.html" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                 <p>Cards</p>

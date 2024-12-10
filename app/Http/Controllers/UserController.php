@@ -17,6 +17,7 @@ class UserController extends Controller
         //dd($user);
         if($user){  
             if($user->password == $password){
+                //dd($user);
                 $request->session()->put('userLoggedIn',true);
                 $request->session()->put('loggedInUserName',$user->username);
                 $request->session()->put('loggedinUserId',$user->id);
@@ -33,9 +34,10 @@ class UserController extends Controller
         }      
     }
 
-    public function user_register(){
+    public function user_register($id=null){
         $userRole = $this->getAllUserRole();
-        // dd($userRole);
+        //dd($userRole);
+
         return view('user.user_register',compact('userRole'));
     }
 
@@ -67,13 +69,13 @@ class UserController extends Controller
                 'name'=>$request->name,
                 'username'=>$request->username,
                 'password'=>$request->password,
-                'email'=>$request->email,
-                'phone'=>$request->phone,
+                'email'=>$request->email??"",
+                'phone'=>$request->phone??"",
                 'is_active'=>$request->{'inline-radios'} =="true"?1:0,
                 'user_type'=>(int)$request->user_type,
                 'image'=>$image_name,
             );
-            // dd($data);
+             dd($data);
 
             $message = DB::statement('CALL InsertOrUpdateUser(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)', [
                 $data['id'],              // p_id
@@ -94,7 +96,7 @@ class UserController extends Controller
             }else{
                 $request->session()->flash('message','User Created Succesfully');
             }
-            
+            return redirect()->route('viewAllUser');
         }
         
     }
@@ -106,7 +108,15 @@ class UserController extends Controller
 
     public function viewAllUser(){
         $userList = DB::select('CALL GetAllUserList()');
+        //dd($userList);
         return view('user.view_user',compact('userList'));
+    }
+
+    public function edit_user(Request $request, $id){
+        $userRole = $this->getAllUserRole();
+        //dd($userRole);
+
+        return view('user.user_register',compact('userRole'));
     }
 
     

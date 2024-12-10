@@ -11,37 +11,34 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <strong class="card-title">Data Table</strong>
+                    <strong class="card-title">User List</strong>
                 </div>
                 <div class="card-body">
                     <table id="bootstrap-data-table" class="table table-striped table-bordered" id="userListTable">
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Salary</th>
+                                <th>UserName</th>
+                                <th>Email</th>
+                                <th>Image</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($userList as $users)
                             <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>$320,800</td>
+                                <td>{{$users->name}}</td>
+                                <td>{{$users->username}}</td>
+                                <td>{{$users->email}}</td>
+                                <td>@if($users->image !="") 
+                                    <img src="{{asset('storage/media/user/'.$users->image)}}">
+                                    @else
+                                    @endif
+                                
+                                </td>
+                                <td><a href="{{route('edit-user',$users->id)}}"><button class="btn btn-sm btn-primary">Edit</button></a></td>
                             </tr>
-                            <tr>
-                                <td>Garrett Winters</td>
-                                <td>Accountant</td>
-                                <td>Tokyo</td>
-                                <td>$170,750</td>
-                            </tr>
-                            <tr>
-                                <td>Ashton Cox</td>
-                                <td>Junior Technical Author</td>
-                                <td>San Francisco</td>
-                                <td>$86,000</td>
-                            </tr>
+                            @endforeach
                            
                         </tbody>
                     </table>
