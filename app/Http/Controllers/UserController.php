@@ -113,10 +113,12 @@ class UserController extends Controller
     }
 
     public function edit_user(Request $request, $id){
+        // phpinfo();
+        //var_dump(php_ini_loaded_file(), php_ini_scanned_files());
         $userRole = $this->getAllUserRole();
         //dd($userRole);
 
-        return view('user.user_register',compact('userRole'));
+        return view('user.user_edit',compact('userRole'));
     }
 
     
